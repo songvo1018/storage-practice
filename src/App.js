@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Layout from './layout/Layout';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const arr = [
+      {
+        id: '1',
+        name: 'alex',
+        category: 'creator',
+        description: '...',
+        price: 'all'
+      },
+      {
+        id: '2',
+        name: 'naska',
+        category: 'osoba',
+        description: 'prekrasnaya Anastasi',
+        price: 'all'
+      },
+      {
+        id: '3',
+        name: 'tuman',
+        category: 'pes',
+        description: 'hochet est` ruki',
+        price: 'all'
+      },
+      {
+        id: '4',
+        name: 'pisuk',
+        category: 'unknown',
+        description: 'who is it?',
+        price: 'all'
+      },
+  ]
+  return <Layout arr={arr} />;
 }
 
 export default App;

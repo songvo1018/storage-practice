@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import Layout from './layout/Layout';
+import Layout from './containers/layout/Layout';
+import { createItem } from './store/actions/items';
 
 
 class App extends Component {
   render() {
     const {user, arr} = this.props
     
+    
+    
     return (
 			<div>
 				{user ? <span>User not auth</span> : <span>User not auth</span>}
-				<Layout arr={arr} />
+				<Layout arr={arr} auth={user.isAuthenticated}/>
 			</div>
 		);
     
@@ -20,8 +23,14 @@ class App extends Component {
 const mapStateToProps = store => {
   return {
     user : store.user,
-    arr: store.item
+    array: store.item.arr
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => {
+  return {
+    createItemAction: array => dispatch(createItem(array))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

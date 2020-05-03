@@ -2,10 +2,11 @@ import React from 'react'
 import './ItemCard.css'
 
 const ItemCard = (props) => {
-  let data = props.data
   return (
 		<div className='card'>
-			<p>array {data.name}</p>
+			<p>{props.data.name}</p>
+			<p>{props.data.category}</p>
+			<p>{props.data.description}</p>
 		</div>
 	);
 }

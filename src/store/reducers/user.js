@@ -1,5 +1,5 @@
 const InitialState = {
-	isAuthenticated: false
+	isAuthenticated: true
 };
 
 export function userReducer(state = InitialState) {

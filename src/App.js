@@ -1,38 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux'
 import Layout from './layout/Layout';
 
-function App() {
-  const arr = [
-      {
-        id: '1',
-        name: 'alex',
-        category: 'creator',
-        description: '...',
-        price: 'all'
-      },
-      {
-        id: '2',
-        name: 'naska',
-        category: 'osoba',
-        description: 'prekrasnaya Anastasi',
-        price: 'all'
-      },
-      {
-        id: '3',
-        name: 'tuman',
-        category: 'pes',
-        description: 'hochet est` ruki',
-        price: 'all'
-      },
-      {
-        id: '4',
-        name: 'pisuk',
-        category: 'unknown',
-        description: 'who is it?',
-        price: 'all'
-      },
-  ]
-  return <Layout arr={arr} />;
+
+class App extends Component {
+  render() {
+    const {user, arr} = this.props
+    
+    return (
+			<div>
+				{user ? <span>User not auth</span> : <span>User not auth</span>}
+				<Layout arr={arr} />
+			</div>
+		);
+    
+  }
 }
 
-export default App;
+const mapStateToProps = store => {
+  return {
+    user : store.user,
+    arr: store.item
+  }
+}
+
+export default connect(mapStateToProps)(App)

@@ -19,14 +19,15 @@ export default class Layout extends Component {
   // }
 
   renderItems() {
+    
     return (
       <ul>
-				<ItemCard data={this.state.arr[0]} />
-				<ItemCard data={this.state.arr[1]} />
-				<ItemCard data={this.state.arr[2]} />
-				<ItemCard data={this.state.arr[3]} />
-				<ItemCard data={this.state.arr[0]} />
-				<ItemCard data={this.state.arr[1]} />
+				<ItemCard data={this.props.arr.arr[0]} />
+				<ItemCard data={this.props.arr.arr[1]} />
+				<ItemCard data={this.props.arr.arr[2]} />
+				<ItemCard data={this.props.arr.arr[3]} />
+				<ItemCard data={this.props.arr.arr[0]} />
+				<ItemCard data={this.props.arr.arr[1]} />
       </ul>
 		)
   }

@@ -1,0 +1,23 @@
+.header {
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header h2 {
+  flex-grow: 1;
+}
+
+.list-item {
+  width: 800px;
+  margin: 0 auto;
+
+}
+
+.list-item ul {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+}

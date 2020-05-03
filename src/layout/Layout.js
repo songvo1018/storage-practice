@@ -12,10 +12,17 @@ export default class Layout extends Component {
       price: 'all'
   }
   
-  renderItems() {    
+  mapArray() {
+    for (let i = 0; i < this.state.arr.length; i++) {
+      const element = this.state.arr[i];
+      this.renderItems(element)
+    }
+  }
+
+  renderItems() {
     return (
 				<li key={this.state.arr[0].id}>
-					<ItemCard data={this.state} />
+					<ItemCard data={this.state.arr[0]} />
 				</li>
 			)
   }

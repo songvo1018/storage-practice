@@ -2,19 +2,14 @@ import React from 'react'
 
 const ItemCard = (props) => {
   let data = props.data
-  console.log(data.arr[1].id);
-  
+  console.log(data);
+  // for (let i = 0; i < data.arr.length; i++) {
+  //   const element = data.arr[i];
+  //   console.log(element.name);
+  // }
   return (
     <div>
-      <p>
-        {data.arr[1].name}
-      </p>
-      <p>
-        {data.arr[1].description}
-      </p>
-      <p>
-        {data.arr[1].price}
-      </p>
+      <p>array {data.name}</p>
     </div>
   )
 }

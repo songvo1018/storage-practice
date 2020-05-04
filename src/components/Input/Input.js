@@ -3,12 +3,11 @@ import React from 'react'
 const Input = (props) => {
 	let placeholder = props.placeholder
   return (
-		<label>
 			<input 
 				placeholder={placeholder} 
+				key = {placeholder}
 				onChange = {props.onChange}
 			/>
-		</label>
 	);
 }
 

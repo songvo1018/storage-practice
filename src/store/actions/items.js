@@ -1,6 +1,6 @@
 export function createItem(array) {
   return {
-    type: 'CREATE_ITEM',
-    payload: array
-  }
+		type: "CREATE_ITEM",
+		payload: array,
+	};
 }

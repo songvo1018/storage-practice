@@ -8,22 +8,19 @@ import { connect } from 'react-redux'
 class Layout extends Component {
 
   state = {
-
       isAuthenticated: this.props.auth,
       showCreateItem: false
   }
 
   renderItems() {
-    const  arr  = this.props.arr;
+    const item = this.props.array;
+    
+    const listItems = item.map((number) =>{
+      return (<ItemCard key ={ number.id  + '-item'} data = {number} />) 
+    });
 
-    const numbers = arr;
-    const listItems = numbers.map((number) =>
-      <ItemCard key ={ number.id + '-item'}data = {number} /> 
-    );
-    return (
-      <ul>{listItems}</ul>
-    );
-    }
+    return ( <ul>{listItems}</ul> );
+  }
 
   showCreateItem() {
     let show = !!this.state.showCreateItem
@@ -33,8 +30,10 @@ class Layout extends Component {
       })
     )
   }
+
   render() {
     const {auth} = this.props
+
     return (
 			<div>
 				<div className="header">
@@ -59,8 +58,8 @@ class Layout extends Component {
 
 const mapStateToProps = (store) => {
 	return {
-		auth: store.user.isAuthenticated,
-		arr: store.item.arr,
+		auth: store.user.isAuth,
+		array: store.item.array,
 	};
 };
 

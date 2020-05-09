@@ -6,54 +6,66 @@ import CreateItem from '../../components/CreateItem/CreateItem'
 import { connect } from 'react-redux'
 
 class Layout extends Component {
+	state = {
+		showCreateItem: false,
+	};
 
-  state = {
-      isAuthenticated: this.props.auth,
-      showCreateItem: false
-  }
+	renderItems() {
+		const item = this.props.array;
 
-  renderItems() {
-    const item = this.props.array;
-    
-    const listItems = item.map((number) =>{
-      return (<ItemCard key ={ number.id  + '-item'} data = {number} />) 
+		const listItems = item.map((item) => {
+			return <ItemCard key={item.id + "-item"} data={item} />;
     });
+    
+		return <ul className="list-group-horizontal">{listItems}</ul>;
+	}
 
-    return ( <ul>{listItems}</ul> );
-  }
+	showCreateItem() {
+		let show = !!this.state.showCreateItem;
+		return this.setState({
+			showCreateItem: !show,
+		});
+	}
 
-  showCreateItem() {
-    let show = !!this.state.showCreateItem
-    return (
-      this.setState({
-        showCreateItem: !show
-      })
-    )
-  }
+	buttonHandler() {
+    let auth = this.props.auth;
 
-  render() {
-    const {auth} = this.props
+		if (auth) {
+      return (
+				<button
+					onClick={() => {this.showCreateItem()	}}
+				>
+					Create Item
+				</button>
+			);
+		} else {
+      return (
+				<button
+					onClick={() => {alert("Please, log in ");	}}
+				>
+					Create Item
+				</button>
+			);
+		}
+	}
 
-    return (
-			<div>
-				<div className="header">
+	render() {
+		return (
+			<div className="container">
+				<div className="head">
 					<h2>Your items on store</h2>
-					<Auth />
-					<button
-						onClick={() => {
-							auth ? this.showCreateItem() : alert('not auth')
-						}}
-					>
-						Create Item
-					</button>
-				</div>
-				
-        {this.state.showCreateItem ? <CreateItem /> : null}
 
-				<div className="list-item">{this.renderItems()}</div>
+					<Auth />
+
+					{this.buttonHandler()}
+				</div>
+
+				{this.state.showCreateItem ? <CreateItem /> : null}
+
+				{this.renderItems()}
 			</div>
 		);
-  }
+	}
 }
 
 const mapStateToProps = (store) => {

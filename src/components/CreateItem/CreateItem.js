@@ -14,7 +14,8 @@ class CreateItem extends Component {
 			description: "",
 			price: "",
 			array: [...this.props.array],
-			prevId: this.props.array
+			prevId: this.props.array,
+			auth: this.props.user
 		};
 	}
 	
@@ -39,19 +40,20 @@ class CreateItem extends Component {
 	handlerValue(e) {
 		const value = e.value;
 		const name = e.placeholder;
-		let prevId = () => {
-			return this.props.array.length;
+		let nexId = () => {			
+			return this.props.array.length + 2;
 		}
 		
 		this.setState({
 			[name]: value,
-			id: prevId() + 1,
+			id: nexId(),
 		});
 
 	}
 
+
 	render() {
-		let inputsName = ['title', 'name', 'category', 'description', 'price']
+		let inputsName = [ 'name', 'category', 'description', 'price']
 		let inputFields = []
 		for (let i = 0; i < inputsName.length; i++) {
 			inputFields.push(
@@ -66,6 +68,7 @@ class CreateItem extends Component {
 				</li>
 			);
 		}
+		
 		
 		return (
 			<div className="create-shadow">
@@ -89,7 +92,7 @@ class CreateItem extends Component {
 
 const mapStateToProps = (store) => {
 	return {
-		user: store.user,
+		user: store.user.isAuth,
 		array: store.item.array,
 	};
 };

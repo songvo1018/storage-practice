@@ -1,14 +1,14 @@
-.header {
+.head {
   margin: 0 auto;
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .header h2 {
   flex-grow: 1;
 }
-
+/* 
 .list-item {
   width: 800px;
   margin: 0 auto;
@@ -20,4 +20,4 @@
   flex-direction: row;
   align-items: baseline;
   flex-wrap: wrap;
-}
+} */

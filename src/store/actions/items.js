@@ -4,3 +4,10 @@ export function createItem(array) {
 		payload: array,
 	};
 }
+
+export function removeItem(array) {
+	return {
+		type: "REMOVE_ITEM",
+		payload: array,
+	};
+}

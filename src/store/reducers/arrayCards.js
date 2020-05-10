@@ -21,7 +21,7 @@ const array = [
 			price: "all",
 		},
 		{
-			id: "5",
+			id: "4",
 			name: "фил",
 			category: "друг",
 			description: "лёёха лёха лёха лёх",

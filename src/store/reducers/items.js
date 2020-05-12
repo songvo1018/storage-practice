@@ -1,5 +1,5 @@
 import {CREATE_ITEM, REMOVE_ITEM} from '../actions/actionType'
-import arrayCards from './arrayCards'
+// import arrayCards from './arrayCards'
 
 const InitialState = {
 	// array: arrayCards,

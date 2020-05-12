@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import ItemCard from '../../components/ItemCard/ItemCard'
+import { connect } from 'react-redux'
+import ModalCreate from "../../components/Modal/ModalCreate";
 import './Layout.css'
 import Auth from '../../components/Auth/Auth'
 import CreateItem from '../../components/CreateItem/CreateItem'
-import { connect } from 'react-redux'
+
 
 class Layout extends Component {
-	state = {
-		showCreateItem: false,
-	};
+	constructor() {
+		super()
+		this.state = { showCreateItem : false}
+	}
 
 	renderItems() {
 		let item = this.props.array;
@@ -20,7 +23,7 @@ class Layout extends Component {
 		return <ul className="list-group-horizontal">{listItems}</ul>;
 	}
 
-	showCreateItem() {
+	showCreateItem = () => {
 		let show = !!this.state.showCreateItem;
 		return this.setState({
 			showCreateItem: !show,
@@ -32,11 +35,8 @@ class Layout extends Component {
 
 		if (auth) {
       return (
-				<button
-					onClick={() => {this.showCreateItem()	}}
-				>
-					Create Item
-				</button>
+				<ModalCreate showCreateItem={this.props.showCreateItem} />
+				
 			);
 		} else {
       return (
@@ -60,7 +60,9 @@ class Layout extends Component {
 					{this.buttonHandler()}
 				</div>
 
-				{this.state.showCreateItem ? <CreateItem /> : null}
+				{this.state.showCreateItem ? (
+					<CreateItem showCreateItem={this.showCreateItem} />
+				) : null}
 
 				{this.renderItems()}
 			</div>

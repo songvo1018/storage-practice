@@ -4,43 +4,41 @@ import './CreateItem.css'
 import { connect } from 'react-redux'
 import { createItem } from "../../store/actions/items";
 
+import Select from '../Select/Select'
+
 class CreateItem extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			id: "",
-			name: "",
-			category: "",
-			description: "",
-			price: "",
-			array: [...this.props.array],
-			prevId: this.props.array,
-			auth: this.props.user
+			Name: "",
+			Category: "",
+			Description: "",
+			Cost: "",
+			options: ['', 'tea', 'coffe', 'hush', 'M&M`s']
 		};
+		this.handlerSelect = this.handlerSelect.bind(this)
 	}
 	
 
 	saveItemInArray() {
 		let item = {
 			id: this.state.id,
-			name: this.state.name,
-			category: this.state.category,
-			description: this.state.description,
-			price: this.state.price,
+			Name: this.state.Name,
+			Category: this.state.Category,
+			Description: this.state.Description,
+			Cost: this.state.Cost,
 		};
 
-		this.setState({
-			array: [...this.state.array, item]
-		})
-
-		const array = [...this.state.array, item]
+		const array = [...this.props.array, item]
 		this.props.createItemAction(array)
 	}
 
 	handlerValue(e) {
 		const value = e.value;
 		const name = e.placeholder;
-		let nexId = () => {			
+		
+		let nexId = () => {
 			return this.props.array.length + 1;
 		}
 		
@@ -51,9 +49,16 @@ class CreateItem extends Component {
 
 	}
 
+	handlerSelect(value) {
+		console.log('on', value);
+		
+		this.setState({
+			Category: value
+		})
+	}
 
 	render() {
-		let inputsName = [ 'name', 'category', 'description', 'price']
+		let inputsName = [ 'Name', 'Description', 'Cost']
 		let inputFields = []
 		for (let i = 0; i < inputsName.length; i++) {
 			inputFields.push(
@@ -69,22 +74,24 @@ class CreateItem extends Component {
 			);
 		}
 		
-		
-		return (
-			<div className="create-shadow">
-				<div className="create-modal">
-					<ul>
-						{inputFields}
 
-						<button
-							type="submit"
-							onClick={() => {this.saveItemInArray()}}>
-							Create
-						</button>
-						<button>Cancel</button>
-					</ul>
-				</div>
-			</div>
+		return (
+			<ul>
+				{inputFields}
+				<Select
+					options={this.state.options}
+					handlerSelect={this.handlerSelect}
+				/>
+				<button
+					type="submit"
+					onClick={() => {
+						this.saveItemInArray();
+					}}
+				>
+					Create
+				</button>
+				<button onClick={() => this.props.hideModal()}>Cancel</button>
+			</ul>
 		);
 	}
 }
@@ -92,7 +99,6 @@ class CreateItem extends Component {
 
 const mapStateToProps = (store) => {
 	return {
-		user: store.user.isAuth,
 		array: store.item.array,
 	};
 };

@@ -1,11 +1,8 @@
-
-.create-modal {
-  margin: 20px auto;
+ul {
   text-align: center;
-  padding: 10px;
-  background-color: cornflowerblue;
 }
 
-.create-modal li {
+li {
+  margin: 10px;
   list-style: none;
 }

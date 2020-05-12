@@ -11,9 +11,9 @@ class Layout extends Component {
 	};
 
 	renderItems() {
-		const item = this.props.array;
-		debugger
-		const listItems = item.map((item) => {
+		let item = this.props.array;
+		
+		let listItems = item.map((item) => {
 			return <ItemCard key={item.id + "-item"} data={item} />;
     });
     

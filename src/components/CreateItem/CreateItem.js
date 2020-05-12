@@ -41,7 +41,7 @@ class CreateItem extends Component {
 		const value = e.value;
 		const name = e.placeholder;
 		let nexId = () => {			
-			return this.props.array.length + 2;
+			return this.props.array.length + 1;
 		}
 		
 		this.setState({

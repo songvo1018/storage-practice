@@ -12,7 +12,7 @@ class RemoveItem extends Component {
   render() {
     return (
 			<div>
-				<button onClick={() => this.handlerRemove(this.props.id)}>Delete</button>
+				<button onClick={() => {this.handlerRemove(this.props.id)}}>Delete</button>
 			</div>
 		);
   }

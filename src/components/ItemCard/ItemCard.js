@@ -1,7 +1,8 @@
 import React from 'react'
 import './ItemCard.css'
-import Remove from './removeItem/removeItem'
-// import ModalWindow from '../Modal/ModalWindow'
+import Remove from './actionItem/removeItem'
+import Edit from './actionItem/editItem'
+
 
 const ItemCard = (props) => {
   return (
@@ -13,7 +14,7 @@ const ItemCard = (props) => {
 				<strong>{props.data.Cost}</strong>
 			</p>
 			<Remove id={props.data.id}/>
-			<button>Edit</button>
+			<Edit data={props.data} />
 		</div>
 	);
 }

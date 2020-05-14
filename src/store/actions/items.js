@@ -11,3 +11,10 @@ export function removeItem(array) {
 		payload: array,
 	};
 }
+
+export function editItem(array) {
+	return {
+		type: "EDIT_ITEM",
+		payload: array,
+	};
+}

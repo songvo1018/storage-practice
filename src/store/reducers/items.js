@@ -1,4 +1,4 @@
-import {CREATE_ITEM, REMOVE_ITEM} from '../actions/actionType'
+import {CREATE_ITEM, REMOVE_ITEM, EDIT_ITEM} from '../actions/actionType'
 // import arrayCards from './arrayCards'
 
 const InitialState = {
@@ -11,6 +11,8 @@ export function itemsReducer(state = InitialState, action) {
 		case CREATE_ITEM:
 			return { ...state, array: action.payload };
 		case REMOVE_ITEM:
+			return { ...state, array: action.payload };
+		case EDIT_ITEM:
 			return { ...state, array: action.payload };
 
 		default:

@@ -34,17 +34,17 @@ class CreateItem extends Component {
 		this.props.createItemAction(array)
 	}
 
+	nexId = () => {
+			return this.props.array.length + 1;
+		}
+
 	handlerValue(e) {
 		const value = e.value;
 		const name = e.placeholder;
-		
-		let nexId = () => {
-			return this.props.array.length + 1;
-		}
-		
+				
 		this.setState({
 			[name]: value,
-			id: nexId(),
+			id: this.nexId(),
 		});
 
 	}

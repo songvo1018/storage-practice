@@ -6,7 +6,7 @@ class EditItem extends Component {
 	handlerRemove(data) {
     console.log(data);
     
-		const result = [  ]
+		// const result = [  ]
 		// this.props.editItemAction(result);
 	}
 

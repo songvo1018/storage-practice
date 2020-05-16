@@ -1,7 +1,7 @@
 import { CHANGE_AUTH } from "../actions/actionType";
 
 const InitialState = {
-	isAuth: false
+	isAuth: false,
 };
 
 export function userReducer(state = InitialState, action) {

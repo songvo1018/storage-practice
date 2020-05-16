@@ -9,7 +9,7 @@ class Select extends Component {
 
   createSelectItems () {
 		let items = [];
-		for (let i = 0; i < this.props.options.length; i++) {
+		for (let i = 0; i < this.props.categories.length; i++) {
 			items.push(
 				<option key={i} value={this.props.options[i]}>
 					{this.props.options[i]}

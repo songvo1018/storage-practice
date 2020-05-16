@@ -15,7 +15,7 @@ class Layout extends Component {
 
 	renderItems() {
 		let item = this.props.array;
-		
+		debugger
 		let listItems = item.map((item) => {
 			return <ItemCard key={item.id + "-item"} data={item} />;
     });
@@ -64,7 +64,7 @@ class Layout extends Component {
 					<CreateItem showCreateItem={this.showCreateItem} />
 				) : null}
 
-				{this.renderItems()}
+				{/* {this.renderItems()} */}
 			</div>
 		);
 	}

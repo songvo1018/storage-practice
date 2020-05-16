@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editItem } from "../../../store/actions/items";
+import ModalEdit from "../../Modal/ModalEdit";
 
 class EditItem extends Component {
 	handlerRemove(data) {
     console.log(data);
     
-		// const result = [  ]
-		// this.props.editItemAction(result);
 	}
 
 	render() {
@@ -20,6 +19,7 @@ class EditItem extends Component {
 				>
 					Edit
 				</button>
+				<ModalEdit />
 			</div>
 		);
 	}

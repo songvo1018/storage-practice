@@ -73,13 +73,14 @@ class CreateItem extends Component {
 				</li>
 			);
 		}
+		console.log(this.props);
 		
 
 		return (
 			<ul>
 				{inputFields}
 				<Select
-					options={this.state.options}
+					categories={this.state.options}
 					handlerSelect={this.handlerSelect}
 				/>
 				<button
@@ -100,6 +101,7 @@ class CreateItem extends Component {
 const mapStateToProps = (store) => {
 	return {
 		array: store.item.array,
+		categories: store.user,
 	};
 };
 

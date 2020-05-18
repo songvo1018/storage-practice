@@ -50,37 +50,32 @@ class CreateItem extends Component {
 	}
 
 	handlerSelect(value) {
-		console.log('on', value);
-		
 		this.setState({
 			Category: value
 		})
 	}
 
 	render() {
-		let inputsName = [ 'Name', 'Description', 'Cost']
 		let inputFields = []
-		for (let i = 0; i < inputsName.length; i++) {
+		for (let i = 0; i < this.props.inputsName.length; i++) {
 			inputFields.push(
-				<li key={inputsName.length+inputsName[i]}>
+				<li key={this.props.inputsName.length+this.props.inputsName[i]}>
 					<Input
-						placeholder={inputsName[i]}
-						key={inputsName[i]}
-						name={inputsName[i]}
+						placeholder={this.props.inputsName[i]}
+						key={this.props.inputsName[i]}
+						name={this.props.inputsName[i]}
 						type="text"
 						onChange={(event) => this.handlerValue(event.target)}
 					/>
 				</li>
 			);
-		}
-		console.log(this.props);
-		
+		}		
 
 		return (
 			<ul>
 				{inputFields}
 				<Select
-					categories={this.state.options}
+					options={this.state.options}
 					handlerSelect={this.handlerSelect}
 				/>
 				<button
@@ -102,6 +97,7 @@ const mapStateToProps = (store) => {
 	return {
 		array: store.item.array,
 		categories: store.user,
+		inputsName: store.item.inputsName
 	};
 };
 

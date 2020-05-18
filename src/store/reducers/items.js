@@ -3,7 +3,9 @@ import {CREATE_ITEM, REMOVE_ITEM, EDIT_ITEM} from '../actions/actionType'
 
 const InitialState = {
 	// array: arrayCards,
-	array: []
+	array: [],
+	category: ["", "tea", "coffe", "hush", "M&M`s"],
+	inputsName: ["Name", "Description", "Cost"],
 };
 
 export function itemsReducer(state = InitialState, action) {

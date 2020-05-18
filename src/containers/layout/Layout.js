@@ -4,18 +4,10 @@ import { connect } from 'react-redux'
 import ModalCreate from "../../components/Modal/ModalCreate";
 import './Layout.css'
 import Auth from '../../components/Auth/Auth'
-import CreateItem from '../../components/CreateItem/CreateItem'
-
 
 class Layout extends Component {
-	constructor() {
-		super()
-		this.state = { showCreateItem : false}
-	}
-
 	renderItems() {
 		let item = this.props.array;
-		debugger
 		let listItems = item.map((item) => {
 			return <ItemCard key={item.id + "-item"} data={item} />;
     });
@@ -30,7 +22,7 @@ class Layout extends Component {
 		});
 	}
 
-	buttonHandler() {
+	CreateItemButton(text) {
     let auth = this.props.auth;
 
 		if (auth) {
@@ -43,13 +35,25 @@ class Layout extends Component {
 				<button
 					onClick={() => {alert("Please, log in ");	}}
 				>
-					Create Item
+					{text}
 				</button>
 			);
 		}
 	}
 
+	ClearStoreButton(text, isClear) {
+		let clearStorage = () => {
+			localStorage.clear();
+		}
+		return (
+			<button onClick={()=> clearStorage()}>
+				{isClear ? 'Store has been clean' : text}
+			</button>
+		)
+	}
+
 	render() {
+		const isClear = false;
 		return (
 			<div className="container">
 				<div className="head">
@@ -57,14 +61,11 @@ class Layout extends Component {
 
 					<Auth />
 
-					{this.buttonHandler()}
+					{this.CreateItemButton("Create Item")}
+					{this.ClearStoreButton('Clear Store', isClear)}
 				</div>
 
-				{this.state.showCreateItem ? (
-					<CreateItem showCreateItem={this.showCreateItem} />
-				) : null}
-
-				{/* {this.renderItems()} */}
+				{this.renderItems()}
 			</div>
 		);
 	}

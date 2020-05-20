@@ -49,7 +49,7 @@ export default class FormInputs extends Component {
 			<div>
 				{this.InputFields()}
 				<Select options={this.props.category} handlerSelect={this.handlerSelect} />
-        <button type="submit" onClick={() => {this.props.updateItem(this.state);}}>Edit</button>
+        <button type="submit" onClick={() => {this.props.updateItem(this.state); this.props.hideModal()}}>Edit</button>
         <button  onClick={this.props.hideModal}>Cancel</button>
 			</div>
 		);

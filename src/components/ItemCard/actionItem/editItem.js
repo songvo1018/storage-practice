@@ -10,10 +10,12 @@ class EditItem extends Component {
 	}
 	updateItem(updatedItem) {
 		console.log(updatedItem);
-		// фильтрануть массив на предмет айтема совпадающейго с айди обновленного, а так же нужна
-		// сортировка, чтобы обновленный айтем занял место старого
-		const array = [...this.props.array, updatedItem];
-		this.props.editItemAction(array);
+		const array = [
+			...this.props.array.filter((item) => item.id !== updatedItem.id),
+		];
+		
+		const updatedArray = [...array, updatedItem]
+		this.props.editItemAction(updatedArray.sort((a, b) => a.id - b.id));
 	}
 
 

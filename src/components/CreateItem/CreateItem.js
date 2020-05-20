@@ -32,6 +32,7 @@ class CreateItem extends Component {
 
 		const array = [...this.props.array, item]
 		this.props.createItemAction(array)
+		this.props.hideModal();
 	}
 
 	nexId = () => {

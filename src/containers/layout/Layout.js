@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ModalCreate from "../../components/Modal/ModalCreate";
 import './Layout.css'
 import Auth from '../../components/Auth/Auth'
+import {clearStore} from '../../store/actions/items'
 
 class Layout extends Component {
 	renderItems() {
@@ -44,10 +45,12 @@ class Layout extends Component {
 	ClearStoreButton(text, isClear) {
 		let clearStorage = () => {
 			localStorage.clear();
+			let emptyArray = []
+			this.props.clearStoreAction(emptyArray);
 		}
 		return (
 			<button onClick={()=> clearStorage()}>
-				{isClear ? 'Store has been clean' : text}
+				{isClear ? text  : 'Store has been clean' }
 			</button>
 		)
 	}
@@ -62,7 +65,7 @@ class Layout extends Component {
 					<Auth />
 
 					{this.CreateItemButton("Create Item")}
-					{this.ClearStoreButton('Clear Store', isClear)}
+					{this.ClearStoreButton('Clear Store and logout', isClear)}
 				</div>
 
 				{this.renderItems()}
@@ -78,4 +81,10 @@ const mapStateToProps = (store) => {
 	};
 };
 
-export default connect(mapStateToProps)(Layout)
+const mapDispatchToProps = (dispatch) => {
+	return {
+		clearStoreAction: (array) => dispatch(clearStore(array)),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)

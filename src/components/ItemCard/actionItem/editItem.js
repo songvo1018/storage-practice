@@ -9,7 +9,6 @@ class EditItem extends Component {
 		this.updateItem = this.updateItem.bind(this)
 	}
 	updateItem(updatedItem) {
-		console.log(updatedItem);
 		const array = [
 			...this.props.array.filter((item) => item.id !== updatedItem.id),
 		];

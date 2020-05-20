@@ -18,3 +18,10 @@ export function editItem(array) {
 		payload: array,
 	};
 }
+
+export function clearStore(array) {
+	return {
+		type: "CLEAR_STORE",
+		payload: array,
+	};
+}

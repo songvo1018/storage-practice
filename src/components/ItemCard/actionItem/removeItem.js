@@ -12,7 +12,18 @@ class RemoveItem extends Component {
   render() {
     return (
 			<div>
-				<button onClick={() => {this.handlerRemove(this.props.id)}}>Delete</button>
+				<button
+					onClick={() => {
+						this.handlerRemove(this.props.id);
+					}}
+					style={{
+						backgroundColor: "#613a43",
+						color: "azure",
+						borderRadius: "4px",
+					}}
+				>
+					Delete
+				</button>
 			</div>
 		);
   }

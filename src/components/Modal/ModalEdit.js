@@ -16,7 +16,12 @@ const ModalEdit = (props) => {
 
 	return (
 		<>
-			<button onClick={() => showModal()}>Edit item</button>
+			<button 
+				onClick={() => showModal()}
+				style={{backgroundColor: '#e9dccd', borderRadius: '4px'}}
+			>
+				Edit item
+			</button>
 			<Modal show={isOpen} onHide={hideModal}>
 				<Modal.Header>Edit item '{props.data.Name}'</Modal.Header>
 				<Modal.Body>

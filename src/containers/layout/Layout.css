@@ -1,3 +1,8 @@
+.wrap {
+  background-color: #9bbcc3;
+  min-height: 940px;
+}
+
 .head {
   margin: 0 auto;
   text-align: center;
@@ -8,16 +13,8 @@
 .header h2 {
   flex-grow: 1;
 }
-/* 
-.list-item {
-  width: 800px;
-  margin: 0 auto;
 
+.empty-store {
+  text-align: center;
+  margin: 80px auto;
 }
-
-.list-item ul {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  flex-wrap: wrap;
-} */

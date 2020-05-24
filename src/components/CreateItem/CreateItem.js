@@ -75,10 +75,12 @@ class CreateItem extends Component {
 		return (
 			<ul>
 				{inputFields}
-				<Select
-					options={this.state.options}
-					handlerSelect={this.handlerSelect}
-				/>
+				<li>
+					<Select
+						options={this.state.options}
+						handlerSelect={this.handlerSelect}
+					/>
+				</li>
 				<button
 					type="submit"
 					onClick={() => {

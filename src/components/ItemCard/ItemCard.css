@@ -1,3 +1,28 @@
-.item {
-  text-align: center;
+.list-group-item {
+  background-color: cornflowerblue;
+}
+
+.title {
+  display: flex;
+  justify-content: space-around;
+}
+
+.title span {
+  font-style: italic;
+}
+
+.description {
+  margin: 5px 20px;
+}
+
+.cost{
+  font-size: large;
+  margin: 5px 20px;
+  text-align: right;
+}
+
+.btns {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 24px;
 }

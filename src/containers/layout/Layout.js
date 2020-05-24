@@ -6,14 +6,16 @@ import './Layout.css'
 import Auth from '../../components/Auth/Auth'
 import {clearStore} from '../../store/actions/items'
 
+import { changeAuth } from "../../store/actions/user";
+import ModalLogOut from '../../components/Modal/ModalLogOut';
+
 class Layout extends Component {
 	renderItems() {
-		let item = this.props.array;
-		let listItems = item.map((item) => {
+		let listItems = this.props.array.map((item) => {
 			return <ItemCard key={item.id + "-item"} data={item} />;
-    });
+		});
     
-		return <ul className="list-group-horizontal">{listItems}</ul>;
+		return <div className="list-group-horizontal">{listItems}</div>;
 	}
 
 	showCreateItem = () => {
@@ -33,19 +35,19 @@ class Layout extends Component {
 			);
 		} else {
       return (
-				<button
-					onClick={() => {alert("Please, log in ");	}}
-				>
-					{text}
-				</button>
+				<ModalLogOut text={text}/>
 			);
 		}
 	}
 
-	ClearStoreButton(text, isClear) {
+	ClearStoreButton(text) {
+		let isClear = this.props.array[0]
+
 		let clearStorage = () => {
 			localStorage.clear();
 			let emptyArray = []
+			let isAuth = this.props.auth
+			this.props.changeAuthAction(!isAuth);
 			this.props.clearStoreAction(emptyArray);
 		}
 		return (
@@ -55,20 +57,36 @@ class Layout extends Component {
 		)
 	}
 
-	render() {
-		const isClear = false;
+	eptyStore () {
 		return (
-			<div className="container">
-				<div className="head">
-					<h2>Your items on store</h2>
+			<div className="empty-store">
+				<h2>Your store is empty, create something!</h2>
+			</div>
+		);
+	}
 
-					<Auth />
+	render() {
+		let itemsOnStore = this.props.array[0]
+		return (
+			<div className="wrap">
+				<div className="container">
+					<div className="head">
+						<h2>Your items on store</h2>
 
-					{this.CreateItemButton("Create Item")}
-					{this.ClearStoreButton('Clear Store and logout', isClear)}
+						<Auth />
+
+						{this.CreateItemButton("Create Item")}
+						{this.ClearStoreButton("Clear Store and logout")}
+					</div>
+
+					<div style={{margin: "5px 10px"}}>
+						{
+							itemsOnStore 
+							?	this.renderItems()
+							:	this.eptyStore()
+						}
+					</div>
 				</div>
-
-				{this.renderItems()}
 			</div>
 		);
 	}
@@ -84,6 +102,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		clearStoreAction: (array) => dispatch(clearStore(array)),
+		changeAuthAction: (auth) => dispatch(changeAuth(auth)),
 	};
 };
 

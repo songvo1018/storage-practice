@@ -1,3 +1,8 @@
-/* .auth {
-  padding: 25px;
-} */
+.title {
+  margin-top: 10px;
+}
+
+.title input {
+  height: 30px;
+  margin-left: 15px;
+}

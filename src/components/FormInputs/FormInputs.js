@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Input from '../Input/Input'
 import Select from '../Select/Select'
 
@@ -39,12 +40,10 @@ export default class FormInputs extends Component {
 					/>
 				</li>
 			);
-		}	
-		return inputFields	
-	}	
+		}
+		return inputFields
+	}
   render() {
-    
-    
     return (
 			<div>
 				{this.InputFields()}

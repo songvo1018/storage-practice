@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import CreateItem from '../CreateItem/CreateItem'
 
 
-const ModalCreate = (props) => {
+const ModalCreate = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
 
 	const showModal = () => {
@@ -17,7 +17,12 @@ const ModalCreate = (props) => {
 	};
 	return (
 		<>
-			<button onClick={() => showModal()}>Create Item</button>
+			<button 
+			onClick={() => showModal()}
+			style={{
+				backgroundColor: 'rgb(233, 220, 205)'
+			}}
+			>Create Item</button>
 			<Modal show={isOpen} onHide={hideModal}>
 				<Modal.Header>Create new item</Modal.Header>
 				<Modal.Body>

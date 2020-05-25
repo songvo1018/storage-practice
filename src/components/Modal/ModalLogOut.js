@@ -6,7 +6,14 @@ function ModalLogOut(props) {
 	const [smShow, setSmShow] = React.useState(false);
 	return (
 		<>
-			<button onClick={() => setSmShow(true)}>{props.text}</button>{" "}
+			<button
+				onClick={() => setSmShow(true)}
+				style={{
+					backgroundColor: "rgb(233, 220, 205)",
+				}}
+			>
+				{props.text}
+			</button>{" "}
 			<Modal
 				size="sm"
 				show={smShow}

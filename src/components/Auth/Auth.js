@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
-import './Auth.css'
 import { connect } from 'react-redux'
+
 import {changeAuth} from "../../store/actions/user";
 
+import './Auth.css'
+
+// style={{ marginTop: "10px" }}
 
 class Auth extends Component {
 	viewAuth() {
 		if (this.props.auth) {
 			return (
 				<div>
-					<h5 style={{ marginTop: "10px" }}>You logged in</h5>
+					<h5 className="title" >You logged in</h5>
 				</div>
 			);
 		} else {
 			return (
 				<div>
-					<h5 style={{ marginTop: "10px " }}>
+					<h5 className="title">
 						{this.props.auth ? " You logged in" : " Log in? "}
 						<input
 							type="checkbox"

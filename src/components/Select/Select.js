@@ -7,8 +7,7 @@ class Select extends Component {
   }
 
   createSelectItems () {
-    let items = [];
-    
+    let items = [];    
 		for (let i = 0; i < this.props.options.length; i++) {
 			items.push(
 				<option key={i} value={this.props.options[i]}>
@@ -21,7 +20,12 @@ class Select extends Component {
   
   render() {
     return (
-			<Form.Control as="select" placeholder='Category' custom onChange={(event) => this.onDropDownSelected(event.target.value)}>
+			<Form.Control 
+        as="select" 
+        placeholder='Category' 
+        custom 
+        onChange={(event) => this.onDropDownSelected(event.target.value)}
+      >
 				{this.createSelectItems()}
 			</Form.Control>
 		);

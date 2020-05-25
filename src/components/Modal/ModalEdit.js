@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import "bootstrap/dist/css/bootstrap.min.css"
+
 import FormInputs from '../FormInputs/FormInputs'
 
 
@@ -13,7 +14,8 @@ const ModalEdit = (props) => {
 	const hideModal = () => {
 		setIsOpen(false);
 	};
-
+	console.log(props.data);
+	
 	return (
 		<>
 			<button 
@@ -34,11 +36,7 @@ const ModalEdit = (props) => {
 							hideModal={hideModal}
 						/>
 					</ul>
-					{/* форма, в поля которой выведены актуальные значения конкретного итема. при нажатии на саб, форма должна закрыться и заменить старые значения в итеме(сторе) на новое с сохранением айди */}
 				</Modal.Body>
-				<Modal.Footer>
-					<button onClick={hideModal}>Cancel</button>
-				</Modal.Footer>
 			</Modal>
 		</>
 	);

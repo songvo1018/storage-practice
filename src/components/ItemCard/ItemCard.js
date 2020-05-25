@@ -1,8 +1,9 @@
 import React from 'react'
-import './ItemCard.css'
-import Remove from './actionItem/removeItem'
-import Edit from './actionItem/editItem'
 
+import Remove from './ItemCardButtons/removeItem'
+import Edit from './ItemCardButtons/editItem'
+
+import './ItemCard.css'
 
 const ItemCard = (props) => {
   return (

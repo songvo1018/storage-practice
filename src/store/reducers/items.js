@@ -2,7 +2,7 @@ import {CREATE_ITEM, REMOVE_ITEM, EDIT_ITEM, CLEAR_STORE} from '../actions/actio
 
 const InitialState = {
 	array: [],
-	category: ["", "tea", "coffe", "hush", "M&M`s"],
+	category: ["", "tea", "coffe", "juice", "whiskey", "beer", "something alse"],
 	inputsName: ["Name", "Description", "Cost"],
 };
 

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import ItemCard from '../../components/ItemCard/ItemCard'
 import { connect } from 'react-redux'
-import ModalCreate from "../../components/Modal/ModalCreate";
-import './Layout.css'
-import Auth from '../../components/Auth/Auth'
-import {clearStore} from '../../store/actions/items'
 
-import { changeAuth } from "../../store/actions/user";
+import ItemCard from '../../components/ItemCard/ItemCard'
+import ModalCreate from "../../components/Modal/ModalCreate";
+import Auth from '../../components/Auth/Auth'
 import ModalLogOut from '../../components/Modal/ModalLogOut';
+
+import {clearStore} from '../../store/actions/items'
+import { changeAuth } from "../../store/actions/user";
+
+import './Layout.css'
 
 class Layout extends Component {
 	renderItems() {
@@ -18,20 +20,11 @@ class Layout extends Component {
 		return <div className="list-group-horizontal">{listItems}</div>;
 	}
 
-	showCreateItem = () => {
-		let show = !!this.state.showCreateItem;
-		return this.setState({
-			showCreateItem: !show,
-		});
-	}
-
-	CreateItemButton(text) {
+	сreateItemButton(text) {
     let auth = this.props.auth;
-
 		if (auth) {
       return (
-				<ModalCreate showCreateItem={this.props.showCreateItem} />
-				
+				<ModalCreate />
 			);
 		} else {
       return (
@@ -40,7 +33,7 @@ class Layout extends Component {
 		}
 	}
 
-	ClearStoreButton(text) {
+	сlearStoreButton(text) {
 		let isClear = this.props.array[0]
 
 		let clearStorage = () => {
@@ -51,10 +44,13 @@ class Layout extends Component {
 			this.props.clearStoreAction(emptyArray);
 		}
 		return (
-			<button onClick={()=> clearStorage()}>
-				{isClear ? text  : 'Store has been clean' }
+			<button
+				onClick={() => clearStorage()}
+				style={{backgroundColor: "powderblue"}}
+			>
+				{isClear ? text : "Store has been clean"}
 			</button>
-		)
+		);
 	}
 
 	eptyStore () {
@@ -75,8 +71,10 @@ class Layout extends Component {
 
 						<Auth />
 
-						{this.CreateItemButton("Create Item")}
-						{this.ClearStoreButton("Clear Store and logout")}
+						{this.сreateItemButton("Create Item")}
+
+						{this.сlearStoreButton("Clear Store and logout")}
+
 					</div>
 
 					<div style={{margin: "5px 10px"}}>

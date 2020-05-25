@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { editItem } from "../../../store/actions/items";
 import ModalEdit from "../../Modal/ModalEdit";
 

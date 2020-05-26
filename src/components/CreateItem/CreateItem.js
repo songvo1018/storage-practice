@@ -60,6 +60,8 @@ class CreateItem extends Component {
 
 	render() {
 		let inputFields = []
+		console.log(this.props.category);
+		
 		for (let i = 0; i < this.props.inputsName.length; i++) {
 			inputFields.push(
 				<li key={this.props.inputsName.length+this.props.inputsName[i]}>
@@ -102,7 +104,7 @@ const mapStateToProps = (store) => {
 	return {
 		array: store.item.array,
 		category: store.item.category,
-		inputsName: store.item.inputsName
+		inputsName: store.item.inputsName,
 	};
 };
 

@@ -67,7 +67,7 @@ class Layout extends Component {
 			<div className="wrap">
 				<div className="container">
 					<div className="head">
-						<h2>Your items on store</h2>
+						<h2>Your store</h2>
 
 						<Auth />
 

@@ -5,3 +5,7 @@
     color: black;
     border: none;
 }
+
+.create_btn:focus {
+  outline: none;
+}

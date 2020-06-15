@@ -17,10 +17,18 @@ class Layout extends Component {
 			return <ItemCard key={item.id + "-item"} data={item} />;
 		});
     
-		return <div className="list-group-horizontal">{listItems}</div>;
+		// return <div className="list-group-horizontal list_items">{listItems}</div>;
+		return <div className="list-group-horizontal list_items">{listItems}</div>;
 	}
 
-	сreateItemButton(text) {
+	showCreateItem = () => {
+		let show = !!this.state.showCreateItem;
+		return this.setState({
+			showCreateItem: !show,
+		});
+	}
+
+	createItemButton(text) {
     let auth = this.props.auth;
 		if (auth) {
       return (
@@ -33,23 +41,49 @@ class Layout extends Component {
 		}
 	}
 
-	сlearStoreButton(text) {
+	clearStoreButton(text) {
 		let isClear = this.props.array[0]
 
 		let clearStorage = () => {
 			localStorage.clear();
 			let emptyArray = []
-			let isAuth = this.props.auth
-			this.props.changeAuthAction(!isAuth);
+			
 			this.props.clearStoreAction(emptyArray);
 		}
-		return (
-			<button
+		let btn = (text) => 
+		<button
 				onClick={() => clearStorage()}
-				style={{backgroundColor: "powderblue"}}
+				style={{ 
+					backgroundColor: "#ff5e26",
+					border:"none", 
+					color: 'white'}}
 			>
-				{isClear ? text : "Store has been clean"}
+				{text}
 			</button>
+		return (
+			isClear ? btn(text) : null
+		);
+	}
+
+	logOutButton(text) {
+		let isAuth = this.props.auth;
+		let logOut = () => {
+			if (isAuth) {
+				this.props.changeAuthAction(!isAuth);
+			}
+		}
+		let btn = (text) => <button
+				onClick={() => logOut()}
+				style={{
+					backgroundColor: "#ff5e26",
+					border:"none",
+					color: "white",
+				}}
+			>
+			{text}
+			</button>
+		return (
+				isAuth ? btn(text) : null
 		);
 	}
 
@@ -67,22 +101,19 @@ class Layout extends Component {
 			<div className="wrap">
 				<div className="container">
 					<div className="head">
-						<h2>Your store</h2>
+						<h2 style={{color:"white"}}>Your storage</h2>
 
 						<Auth />
 
-						{this.сreateItemButton("Create Item")}
+						{this.createItemButton("Create Item")}
 
-						{this.сlearStoreButton("Clear Store and logout")}
+						{this.clearStoreButton("Clear Store")}
 
+						{this.logOutButton("Log out")}
 					</div>
 
-					<div style={{margin: "5px 10px"}}>
-						{
-							itemsOnStore 
-							?	this.renderItems()
-							:	this.eptyStore()
-						}
+					<div style={{ margin: "5px 10px" }}>
+						{itemsOnStore ? this.renderItems() : this.eptyStore()}
 					</div>
 				</div>
 			</div>

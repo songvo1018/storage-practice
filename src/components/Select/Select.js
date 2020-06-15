@@ -20,12 +20,7 @@ class Select extends Component {
   
   render() {
     return (
-			<Form.Control 
-        as="select" 
-        placeholder='Category' 
-        custom 
-        onChange={(event) => this.onDropDownSelected(event.target.value)}
-      >
+			<Form.Control style={{width: '180px'}} as="select" placeholder='Category' custom onChange={(event) => this.onDropDownSelected(event.target.value)}>
 				{this.createSelectItems()}
 			</Form.Control>
 		);

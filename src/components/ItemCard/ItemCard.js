@@ -9,11 +9,10 @@ const ItemCard = (props) => {
   return (
 		<div
 			className="list-group-item item"
-			style={{ backgroundColor: "#a9ff8a" }}
 		>
 			<div className="title">
-				<h3>{props.data.Name}</h3>
-				<span>{props.data.Category}</span>
+				<span>{props.data.Name}</span>
+				<p>{props.data.Category}</p>
 			</div>
 
 			<div className="description">{props.data.Description}</div>

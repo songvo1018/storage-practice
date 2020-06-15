@@ -5,6 +5,7 @@ import { createItem } from "../../store/actions/items";
 
 import Input from '../Input/Input'
 import Select from '../Select/Select'
+import ModalEnterFields from '../Modal/ModalEnterFields';
 
 import './CreateItem.css'
 
@@ -17,7 +18,6 @@ class CreateItem extends Component {
 			Category: "",
 			Description: "",
 			Cost: "",
-			// options: this.props.category
 		};
 		this.handlerSelect = this.handlerSelect.bind(this)
 	}
@@ -31,10 +31,15 @@ class CreateItem extends Component {
 			Description: this.state.Description,
 			Cost: this.state.Cost,
 		};
-
-		const array = [...this.props.array, item]
-		this.props.createItemAction(array)
-		this.props.hideModal();
+		if (item.Name && item.Description && item.Cost !== '') {
+			const array = [...this.props.array, item];
+			this.props.createItemAction(array);
+			this.props.hideModal();
+		}
+		else {
+			alert("Please enter fields");
+		}
+		
 	}
 
 	nexId = () => {
@@ -59,9 +64,7 @@ class CreateItem extends Component {
 	}
 
 	render() {
-		let inputFields = []
-		console.log(this.props.category);
-		
+		let inputFields = []		
 		for (let i = 0; i < this.props.inputsName.length; i++) {
 			inputFields.push(
 				<li key={this.props.inputsName.length+this.props.inputsName[i]}>

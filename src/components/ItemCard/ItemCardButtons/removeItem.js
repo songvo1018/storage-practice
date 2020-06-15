@@ -18,9 +18,9 @@ class RemoveItem extends Component {
 						this.handlerRemove(this.props.id);
 					}}
 					style={{
-						backgroundColor: "#613a43",
-						color: "azure",
-						borderRadius: "4px",
+						backgroundColor: "white",
+						borderRadius: "2px",
+						border:"1px solid gray"
 					}}
 				>
 					Delete

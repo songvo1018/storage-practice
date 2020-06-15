@@ -1,14 +1,16 @@
 .wrap {
-  background-color: #9bbcc3;
+  background-color: #fdc10fcf;
   min-height: 940px;
 }
 
 .head {
   margin: 0 auto;
+  padding: 64px;
   text-align: center;
   display: flex;
   justify-content: space-around;
   padding-top: 15px;
+  background-color: #ff9abd;
 }
 
 .header h2 {
@@ -18,4 +20,8 @@
 .empty-store {
   text-align: center;
   margin: 80px auto;
+}
+
+.list_items{
+  background-color: #58f38480;
 }

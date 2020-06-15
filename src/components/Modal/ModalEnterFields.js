@@ -2,18 +2,10 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function ModalLogOut(props) {
+function ModalEnterFields(props) {
 	const [smShow, setSmShow] = React.useState(false);
 	return (
 		<>
-			<button
-				onClick={() => setSmShow(true)}
-				style={{
-					backgroundColor: "white", border: 'none',
-				}}
-			>
-				{props.text}
-			</button>{" "}
 			<Modal
 				size="sm"
 				show={smShow}
@@ -22,7 +14,7 @@ function ModalLogOut(props) {
 			>
 				<Modal.Header closeButton>
 					<Modal.Title id="example-modal-sizes-title-sm">
-						Please, log in
+						{props.text}
 					</Modal.Title>
 				</Modal.Header>
 			</Modal>
@@ -30,4 +22,4 @@ function ModalLogOut(props) {
 	);
 }
 
-export default ModalLogOut
+export default ModalEnterFields;

@@ -20,7 +20,7 @@ export default class FormInputs extends Component {
 
     this.setState({
       [name]: value,
-      id: this.props.data.id
+      id: this.props.data.id 
 		});
 	}
 
@@ -48,9 +48,25 @@ export default class FormInputs extends Component {
     return (
 			<div>
 				{this.InputFields()}
-				<Select options={this.props.category} handlerSelect={this.handlerSelect} />
-        <button type="submit" onClick={() => {this.props.updateItem(this.state); this.props.hideModal()}}>Edit</button>
-        <button  onClick={this.props.hideModal}>Cancel</button>
+				<Select
+					options={this.props.category}
+					handlerSelect={this.handlerSelect}
+				/>
+				<div style={{ margin: "10px" }}>
+					<button
+						style={{ margin: "10px" }}
+						type="submit"
+						onClick={() => {
+							this.props.updateItem(this.state);
+							this.props.hideModal();
+						}}
+					>
+						Edit
+					</button>
+					<button style={{ margin: "10px" }} onClick={this.props.hideModal}>
+						Cancel
+					</button>
+				</div>
 			</div>
 		);
   }

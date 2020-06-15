@@ -37,11 +37,7 @@ const ModalEdit = (props) => {
 							hideModal={hideModal}
 						/>
 					</ul>
-					{/* форма, в поля которой выведены актуальные значения конкретного итема. при нажатии на саб, форма должна закрыться и заменить старые значения в итеме(сторе) на новое с сохранением айди */}
 				</Modal.Body>
-				<Modal.Footer>
-					<button onClick={hideModal}>Cancel</button>
-				</Modal.Footer>
 			</Modal>
 		</>
 	);

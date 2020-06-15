@@ -26,7 +26,7 @@ class Layout extends Component {
 		});
 	}
 
-	CreateItemButton(text) {
+	createItemButton(text) {
     let auth = this.props.auth;
 
 		if (auth) {
@@ -41,7 +41,7 @@ class Layout extends Component {
 		}
 	}
 
-	ClearStoreButton(text) {
+	clearStoreButton(text) {
 		let isClear = this.props.array[0]
 
 		let clearStorage = () => {
@@ -101,24 +101,19 @@ class Layout extends Component {
 			<div className="wrap">
 				<div className="container">
 					<div className="head">
-						<h2>Your items on store</h2>
+						<h2 style={{color:"white"}}>Your storage</h2>
 
 						<Auth />
 
-						{this.сreateItemButton("Create Item")}
+						{this.createItemButton("Create Item")}
 
-						{this.сlearStoreButton("Clear Store")}
+						{this.clearStoreButton("Clear Store")}
 
 						{this.logOutButton("Log out")}
-
 					</div>
 
-					<div style={{margin: "5px 10px"}}>
-						{
-							itemsOnStore 
-							?	this.renderItems()
-							:	this.eptyStore()
-						}
+					<div style={{ margin: "5px 10px" }}>
+						{itemsOnStore ? this.renderItems() : this.eptyStore()}
 					</div>
 				</div>
 			</div>

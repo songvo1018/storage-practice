@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { createItem } from "../../store/actions/items";
 
 import Select from '../Select/Select'
+import ModalEnterFields from '../Modal/ModalEnterFields';
 
 class CreateItem extends Component {
 	constructor(props) {
@@ -15,7 +16,6 @@ class CreateItem extends Component {
 			Category: "",
 			Description: "",
 			Cost: "",
-			options: ['', 'tea', 'coffe', 'hush', 'M&M`s']
 		};
 		this.handlerSelect = this.handlerSelect.bind(this)
 	}
@@ -29,13 +29,13 @@ class CreateItem extends Component {
 			Description: this.state.Description,
 			Cost: this.state.Cost,
 		};
-		if (item.Name && item.Description && item.Cost != '') {
+		if (item.Name && item.Description && item.Cost !== '') {
 			const array = [...this.props.array, item];
 			this.props.createItemAction(array);
 			this.props.hideModal();
 		}
 		else {
-			alert('Please, enter fields')
+			alert("Please enter fields");
 		}
 		
 	}
@@ -82,7 +82,7 @@ class CreateItem extends Component {
 				{inputFields}
 				<li>
 					<Select
-						options={this.state.options}
+						options={this.props.category}
 						handlerSelect={this.handlerSelect}
 					/>
 				</li>
@@ -104,8 +104,8 @@ class CreateItem extends Component {
 const mapStateToProps = (store) => {
 	return {
 		array: store.item.array,
-		categories: store.user,
-		inputsName: store.item.inputsName
+		category: store.item.category,
+		inputsName: store.item.inputsName,
 	};
 };
 

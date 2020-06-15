@@ -12,13 +12,16 @@ const ModalEdit = (props) => {
 	};
 	const hideModal = () => {
 		setIsOpen(false);
-	};
-
+	};	
 	return (
 		<>
-			<button 
+			<button
 				onClick={() => showModal()}
-				style={{backgroundColor: '#e9dccd', borderRadius: '4px'}}
+				style={{
+					backgroundColor: "white",
+					borderRadius: "2px",
+					border: "1px solid gray",
+				}}
 			>
 				Edit item
 			</button>

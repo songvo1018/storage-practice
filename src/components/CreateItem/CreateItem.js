@@ -29,10 +29,15 @@ class CreateItem extends Component {
 			Description: this.state.Description,
 			Cost: this.state.Cost,
 		};
-
-		const array = [...this.props.array, item]
-		this.props.createItemAction(array)
-		this.props.hideModal();
+		if (item.Name && item.Description && item.Cost != '') {
+			const array = [...this.props.array, item];
+			this.props.createItemAction(array);
+			this.props.hideModal();
+		}
+		else {
+			alert('Please, enter fields')
+		}
+		
 	}
 
 	nexId = () => {
@@ -57,7 +62,7 @@ class CreateItem extends Component {
 	}
 
 	render() {
-		let inputFields = []
+		let inputFields = []		
 		for (let i = 0; i < this.props.inputsName.length; i++) {
 			inputFields.push(
 				<li key={this.props.inputsName.length+this.props.inputsName[i]}>

@@ -15,7 +15,8 @@ class Layout extends Component {
 			return <ItemCard key={item.id + "-item"} data={item} />;
 		});
     
-		return <div className="list-group-horizontal">{listItems}</div>;
+		// return <div className="list-group-horizontal list_items">{listItems}</div>;
+		return <div className="list-group-horizontal list_items">{listItems}</div>;
 	}
 
 	showCreateItem = () => {
@@ -46,15 +47,44 @@ class Layout extends Component {
 		let clearStorage = () => {
 			localStorage.clear();
 			let emptyArray = []
-			let isAuth = this.props.auth
-			this.props.changeAuthAction(!isAuth);
+			
 			this.props.clearStoreAction(emptyArray);
 		}
-		return (
-			<button onClick={()=> clearStorage()}>
-				{isClear ? text  : 'Store has been clean' }
+		let btn = (text) => 
+		<button
+				onClick={() => clearStorage()}
+				style={{ 
+					backgroundColor: "#ff5e26",
+					border:"none", 
+					color: 'white'}}
+			>
+				{text}
 			</button>
-		)
+		return (
+			isClear ? btn(text) : null
+		);
+	}
+
+	logOutButton(text) {
+		let isAuth = this.props.auth;
+		let logOut = () => {
+			if (isAuth) {
+				this.props.changeAuthAction(!isAuth);
+			}
+		}
+		let btn = (text) => <button
+				onClick={() => logOut()}
+				style={{
+					backgroundColor: "#ff5e26",
+					border:"none",
+					color: "white",
+				}}
+			>
+			{text}
+			</button>
+		return (
+				isAuth ? btn(text) : null
+		);
 	}
 
 	eptyStore () {
@@ -75,8 +105,12 @@ class Layout extends Component {
 
 						<Auth />
 
-						{this.CreateItemButton("Create Item")}
-						{this.ClearStoreButton("Clear Store and logout")}
+						{this.сreateItemButton("Create Item")}
+
+						{this.сlearStoreButton("Clear Store")}
+
+						{this.logOutButton("Log out")}
+
 					</div>
 
 					<div style={{margin: "5px 10px"}}>

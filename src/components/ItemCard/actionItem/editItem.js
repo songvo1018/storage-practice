@@ -9,11 +9,14 @@ class EditItem extends Component {
 		this.updateItem = this.updateItem.bind(this)
 	}
 	updateItem(updatedItem) {
-		const array = [
-			...this.props.array.filter((item) => item.id !== updatedItem.id),
-		];
+		console.log(this.props.array);
+		let prevArr = [...this.props.array]
+		debugger
+		// const array = [
+		// 	prevArr.filter((item) => item.id !== updatedItem.id),
+		// ];
 		
-		const updatedArray = [...array, updatedItem]
+		const updatedArray = [...prevArr, updatedItem];
 		this.props.editItemAction(updatedArray.sort((a, b) => a.id - b.id));
 	}
 
